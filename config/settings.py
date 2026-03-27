@@ -87,7 +87,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = "ru-ru"
-TIME_ZONE = "Europe/Moscow"
+TIME_ZONE = "Europe/Samara"
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -111,3 +111,18 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+
+CELERY_BROKER_URL = os.getenv("REDIS_URL")
+CELERY_BROKER_BACKEND = os.getenv("REDIS_URL")
+
+CELERY_BEAT_SCHEDULE = {
+    'task-name': {
+        'task': 'habits.tasks.send_habit_reminders',  # Путь к задаче
+        'schedule': timedelta(minutes=1),  # Расписание выполнения задачи
+    },
+}
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_ENABLE_UTC = True
