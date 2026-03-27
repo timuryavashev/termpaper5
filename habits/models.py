@@ -4,7 +4,7 @@ from django.utils import timezone
 from users.models import CustomUser
 
 
-class Wont(models.Model):
+class Habit(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name="Создатель")
     place = models.CharField(max_length=100, verbose_name="Место")
     time = models.TimeField(verbose_name="Время выполнения")
@@ -21,4 +21,4 @@ class Wont(models.Model):
         verbose_name_plural = "Привычки"
 
     def __str__(self):
-        return {self.action}
+        return self.action
