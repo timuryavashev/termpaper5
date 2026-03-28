@@ -35,11 +35,11 @@ class HabitPeriodValidator:
 
         if tmp_val and tmp_val > self.MAX_PERIOD_DAYS:
             raise ValidationError({
-                "time_to_action": f"Нельзя выполнять привычку чаще, чем 7 раз в неделю."
+                "period": f"Нельзя выполнять привычку чаще, чем 7 раз в неделю."
             })
         if tmp_val and tmp_val < self.MAX_PERIOD_DAYS:
             raise ValidationError({
-                "time_to_action": f"Нельзя выполнять привычку реже, чем 1 раз в неделю."
+                "period": f"Нельзя выполнять привычку реже, чем 1 раз в неделю."
             })
 
 
